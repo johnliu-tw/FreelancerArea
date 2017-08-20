@@ -4,19 +4,19 @@
     <img class="card-img-top" src="{{ document.image_url }}" alt="Card image cap" style="width:100%">
     <div class="card-body">
         <h3 class="card-title">
-            Card title
+            {{document.title}}
         </h3>
+        <p class="card-text">
+            <small class="text-muted">
+            Last updated: {{ document.updated_at | date}}
+            </small>
+        </p>
         <p class="card-text">
             {{ document.description }}
         </p>
         <div>
             <a class="btn btn-primary btn-lg" href="{{document.file_url}}">Download File</a>
         </div>
-        <p class="card-text">
-            <small class="text-muted">
-            {{ document.updated_at }}
-            </small>
-        </p>
     </div>
 </div>
 </div>
