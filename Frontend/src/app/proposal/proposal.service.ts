@@ -7,7 +7,7 @@ import{ Proposal } from './proposal';
 @Injectable()
 
 export class ProposalService{
-    private proposalsUrl='http://localhost:3000/proposals.json'
+    private proposalsUrl='http://localhost:3000/proposals'
 
     constructor(
         private http: Http
@@ -18,6 +18,17 @@ export class ProposalService{
                         .map((response: Response) => <Proposal[]>response.json())
                         .catch(this.handleError);
     }
+    getProposal(id: number){
+        return this.http.get(this.proposalsUrl + "/" + id + '.json')
+    }
+
+    createProposal(proposal){
+        let headers = new Headers({ 'Content-Type':'application/json' })
+        let options = new RequestOptions({headers: headers});
+        return this.http.post(this.proposalsUrl, JSON.stringify(proposal), {headers: headers})
+                    .map((res: Response) => res.json());
+    }
+
     private handleError (error:Response | any) {
         // In a real world app, we might use a remote logging infrastructure
         var errMsg;
