@@ -65,6 +65,9 @@
                             class="btn btn-outline-primary btn-lg" 
                             [disabled]="!proposalForm.form.valid"
                             [hidden]="submitted">Generate Proposal</button>
+                    <div class="alert alert-success" role="alert" [hidden]="!submitted">
+                        Your Proposal has been generated <a class="alert-link" routerLink="/proposal">View all proposals </a>
+                    </div>
 
                 </form>
             </div>

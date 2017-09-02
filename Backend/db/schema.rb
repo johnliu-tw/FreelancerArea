@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170820153257) do
+ActiveRecord::Schema.define(version: 20170902145533) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string   "account"
+    t.string   "password"
+    t.string   "Email_account"
+    t.string   "Email_password"
+    t.string   "Email_host"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "documents", force: :cascade do |t|
     t.string   "title"
