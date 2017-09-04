@@ -19,3 +19,6 @@ end
         client_email: "john@gmail.com",
     )
 end
+
+User.create(email: 'user@example.com', nickname: 'UOne', name: 'User One', password: "pokemon2")
+User.create(email: 'user@example.com', nickname: 'UOne', name: 'User One', password: "monkey67")

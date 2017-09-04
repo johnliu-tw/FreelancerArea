@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule} from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Angular2TokenService } from 'angular2-token';
 
 import { HomepageComponent } from './homepage/homepage.component';
 import { DocumentsComponent } from './documents/documents.component';
@@ -30,7 +31,7 @@ import { AppComponent } from './app.component';
     NgbModule.forRoot(),
     HttpModule
   ],
-  providers: [DocumentService],
+  providers: [DocumentService, Angular2TokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
