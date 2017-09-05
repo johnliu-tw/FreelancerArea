@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild,EventEmitter,Output } from '@angular/core';
+
+import { AuthDialogComponent } from "./auth-dialog/auth-dialog.component";
 import { Angular2TokenService } from "angular2-token";
 import { environment } from "../environments/environment";
 
@@ -8,22 +10,15 @@ import { environment } from "../environments/environment";
   styleUrls: ['./app.component.css'],
   moduleId: module.id
 })
-export class AppComponent {
-  title = '缺錢者們';
-  constructor(private authToken: Angular2TokenService){
-    this.authToken.init(environment.token_auth_config);
+export class AppComponent implements OnInit {
 
-    this.authToken.signIn({email:"user@example.com", password:"pokemon2"}).subscribe(
+  @ViewChild('authDialog') authDialog: AuthDialogComponent;
+  constructor(public tokenAuthSerivce: Angular2TokenService){   
+    this.tokenAuthSerivce.init(environment.token_auth_config);
+  }
+  ngOnInit(){}
 
-      res => {
-        console.log('auth response: ', res);
-        console.log("auth response headers:", res.headers.toJSON());
-        console.log("auth response body:", res.json());
-      },
-
-      err => {
-        console.log("auth error: ",err);
-      }
-    )
+  presentAuthDialog(mode?: 'login'| 'register'){
+    this.authDialog.openDialog(mode);
   }
 }

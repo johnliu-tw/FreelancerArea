@@ -20,21 +20,23 @@
         </li>   
     </ul>   
     <ul class="nav navbar-nav">  
-        <li class="nav-item" style="float:right !important;"> 
-            <a class="nav-link">LOGIN</a>
+        <li *ngIf="!tokenAuthSerivce.userSignedIn()" class="nav-item pull-xs-right"> 
+            <a class="nav-link" (click)="presentAuthDialog()">LOGIN</a>
         </li>
-        <li class="nav-item pull-xs-right">
-            <a class="nav-link">REGISTER</a>
+        <li *ngIf="!tokenAuthSerivce.userSignedIn()" class="nav-item pull-xs-right">
+            <a class="nav-link" (click)="presentAuthDialog('register')" >REGISTER</a>
         </li>
-        <li class="nav-item pull-xs-right"> 
-            <a class="nav-link">PROFILE</a>
+        <li *ngIf="tokenAuthSerivce.userSignedIn()" class="nav-item pull-xs-right"> 
+            <a class="nav-link" [routerLink]="['/profile']">PROFILE</a>
         </li>
-        <li class="nav-item pull-xs-right">
-            <a class="nav-link">LOGOUT</a>
+        <li *ngIf="tokenAuthSerivce.userSignedIn()" class="nav-item pull-xs-right">
+            <a class="nav-link" (click)="authToken.signOut()">LOGOUT</a>
         </li>
     </ul>
     </div>
 </nav>
+<app-auth-dialog #authDialog></app-auth-dialog> 
 <div class="app-body">
+    test:{{test}}
     <router-outlet></router-outlet>
 </div>

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule} from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angular2TokenService } from 'angular2-token';
+import { MaterializeModule } from "angular2-materialize";
 
 import { HomepageComponent } from './homepage/homepage.component';
 import { DocumentsComponent } from './documents/documents.component';
@@ -14,6 +15,9 @@ import { ProposalShowComponent } from './proposal/proposal-show.component';
 import { ProposalService } from './proposal/proposal.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component'; 
+import { AuthDialogComponent } from "./auth-dialog/auth-dialog.component";
+import { RegisterFormComponent } from "./register-form/register-form.component";
+import { LoginFormComponent } from "./login-form/login-form.component";
 
 @NgModule({
   declarations: [
@@ -22,16 +26,20 @@ import { AppComponent } from './app.component';
     DocumentsComponent,
     ProposalListComponent,
     ProposalNewComponent,
-    ProposalShowComponent
+    ProposalShowComponent,
+    AuthDialogComponent,
+    RegisterFormComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     NgbModule.forRoot(),
-    HttpModule
+    HttpModule,
+    MaterializeModule
   ],
-  providers: [DocumentService, Angular2TokenService],
+  providers: [DocumentService, Angular2TokenService,LoginFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
