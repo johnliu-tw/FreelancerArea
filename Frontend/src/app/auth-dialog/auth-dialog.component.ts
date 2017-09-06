@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input,Output, EventEmitter} from '@angular/core';
 import {MaterializeAction} from "angular2-materialize";
 
 @Component({
@@ -9,6 +9,7 @@ import {MaterializeAction} from "angular2-materialize";
 export class AuthDialogComponent implements OnInit {
 
   @Input('auth-mode') authMode: 'login' | 'register' = 'login';
+  @Output() signedResult = new EventEmitter<any>();
   modalActions = new EventEmitter<string|MaterializeAction>();
   constructor() {
 
@@ -16,6 +17,7 @@ export class AuthDialogComponent implements OnInit {
     onLoginFormResult(e){   
         if(e.signedIn){
             this.closeDialog();
+            this.signedResult.emit({signed: true});
         }
         else{
             alert(e.err.json().errors[0])
@@ -23,8 +25,10 @@ export class AuthDialogComponent implements OnInit {
     }
     
     onRegisterFormResult(e){
-        if(e.signedUp)
-          this.closeDialog();
+        if(e.signedUp){
+            this.closeDialog();
+            this.signedResult.emit({signed: true});
+        }
         else{
           alert(e.err.json().errors.full_messages[0])
         }

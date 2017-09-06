@@ -11,13 +11,28 @@ import { environment } from "../environments/environment";
   moduleId: module.id
 })
 export class AppComponent implements OnInit {
-
+  signedIn: boolean = false;
   @ViewChild('authDialog') authDialog: AuthDialogComponent;
   constructor(public tokenAuthSerivce: Angular2TokenService){   
     this.tokenAuthSerivce.init(environment.token_auth_config);
   }
   ngOnInit(){}
-
+  checkSignIn(e){
+    console.log(e);
+    if(e.signed){
+      this.signedIn = true;
+    }
+    this.userSignedIn()
+  }
+  userSignedIn(){
+    console.log("YAYA")
+    if(this.signedIn){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
   presentAuthDialog(mode?: 'login'| 'register'){
     this.authDialog.openDialog(mode);
   }
