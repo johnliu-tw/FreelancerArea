@@ -5,7 +5,7 @@ import { HttpModule} from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angular2TokenService } from 'angular2-token';
 import { MaterializeModule } from "angular2-materialize";
-
+import { AuthGuard } from "./auth-dialog/auth-dialog.guard";
 import { ProfileComponent } from "./profile/profile.component";
 import { HomepageComponent } from './homepage/homepage.component';
 import { DocumentsComponent } from './documents/documents.component';
@@ -21,6 +21,7 @@ import { AppComponent } from './app.component';
 import { AuthDialogComponent } from "./auth-dialog/auth-dialog.component";
 import { RegisterFormComponent } from "./register-form/register-form.component";
 import { LoginFormComponent } from "./login-form/login-form.component";
+import { FacebookLoginComponent } from "./login-form/fb.component";
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { LoginFormComponent } from "./login-form/login-form.component";
     AuthDialogComponent,
     RegisterFormComponent,
     LoginFormComponent,
-    ProfileComponent
+    ProfileComponent,
+    FacebookLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,7 @@ import { LoginFormComponent } from "./login-form/login-form.component";
     HttpModule,
     MaterializeModule
   ],
-  providers: [DocumentService, Angular2TokenService, AuthService],
+  providers: [DocumentService, Angular2TokenService, AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

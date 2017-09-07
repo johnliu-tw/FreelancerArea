@@ -26,9 +26,11 @@
         <li *ngIf="!signedIn" class="nav-item pull-xs-right">
             <a class="nav-link" (click)="presentAuthDialog('register')" >REGISTER</a>
         </li>
+        <!--  Fixing
         <li *ngIf="signedIn" class="nav-item pull-xs-right"> 
             <a class="nav-link" [routerLink]="['/profile']">PROFILE</a>
         </li>
+        -->
         <li *ngIf="signedIn" class="nav-item pull-xs-right"> 
             <a class="nav-link" (click)="logOut()">LOGOUT</a>
         </li>

@@ -4,7 +4,7 @@ import { AuthDialogComponent } from "./auth-dialog/auth-dialog.component";
 import { AuthService } from "./auth-dialog/auth-dialog.service";
 import { Angular2TokenService } from "angular2-token";
 import { environment } from "../environments/environment";
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app',

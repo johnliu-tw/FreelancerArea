@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
 
   logOut(){
     this.appComponent.signedIn = false;
-    this.authService.logOutUser().subscribe(() => this.router.navigate(['/']));
+    this.authService.logOutUser().subscribe(() => this.router.navigateByUrl('/home'));
   }
 
   ngOnInit() {
