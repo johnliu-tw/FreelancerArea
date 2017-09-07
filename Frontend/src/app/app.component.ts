@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild,EventEmitter,Output } from '@angular/core';
 
 import { AuthDialogComponent } from "./auth-dialog/auth-dialog.component";
+import { AuthService } from "./auth-dialog/auth-dialog.service";
 import { Angular2TokenService } from "angular2-token";
 import { environment } from "../environments/environment";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app',
@@ -13,24 +15,20 @@ import { environment } from "../environments/environment";
 export class AppComponent implements OnInit {
   signedIn: boolean = false;
   @ViewChild('authDialog') authDialog: AuthDialogComponent;
-  constructor(public tokenAuthSerivce: Angular2TokenService){   
-    this.tokenAuthSerivce.init(environment.token_auth_config);
+  constructor(public authTokenService:Angular2TokenService,public authService:AuthService, private router:Router){   
   }
   ngOnInit(){}
+
+  logOut(){
+    this.signedIn = false;
+    this.authTokenService.signOut().subscribe(() => this.router.navigate(['/']));
+  }
   checkSignIn(e){
-    console.log(e);
     if(e.signed){
       this.signedIn = true;
     }
-    this.userSignedIn()
-  }
-  userSignedIn(){
-    console.log("YAYA")
-    if(this.signedIn){
-      return true;
-    }
     else{
-      return false;
+      this.signedIn = false;
     }
   }
   presentAuthDialog(mode?: 'login'| 'register'){
