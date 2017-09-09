@@ -2,8 +2,15 @@
     margin-top: 80px;
 }
 
+@media screen and (max-width: 850px){
+.navbar-collapse{
+    background-color: #65a6d8;
+    text-align: center;
+}
+}
+
 .nav-styles{
-    background-color: #1a1b22;
+    background-color: #65a6d8;
 }
 
 .nav-styles a{
@@ -15,7 +22,7 @@
 }
 
 a.nav-link.active{
-    color: #e64758 !important;
+    color: white !important;
 }
 
 .dropdown-links a{

@@ -1,30 +1,25 @@
-<nav class="navbar navbar-expand-lg navbar-light nav-styles">
-    <div class="collapse navbar-collapse">
+<nav class="navbar navbar-toggleable-md  navbar-expand-lg navbar-light nav-styles">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01" aria-expanded="true">
     <ul class='nav navbar-nav mr-auto'>
         <li class="nav-item">
-            <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+            <a class="nav-link" routerLink="/home" routerLinkActive="active">首頁</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" routerLink="/documents" routerLinkActive="active">Docs</a>
+            <a class="nav-link" routerLink="/documents" routerLinkActive="active">找錢者們</a>
         </li>
-        <li class="nav-item dropdown">
-            <div ngbDropdown class="d-inline-block dropdown-links dropdown">
-                <button class="btn btn-outline-primary dropdown-toggle" id="proposalDropdown" data-toggle="dropdown" ngbDropdownToggle>
-                    Proposals
-                </button>
-                <div class="dropdown-menu">
-                    <a routerLink="/proposal" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Proposals</a>
-                    <a routerLink="/proposal/new" class="dropdown-item" routerLinkActive="active">New Proposals</a>
-                </div>
-            </div>            
-        </li>   
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/proposal" routerLinkActive="active">求助者們</a>
+        </li>
     </ul>   
     <ul class="nav navbar-nav">  
         <li *ngIf="!signedIn" class="nav-item pull-xs-right"> 
-            <a class="nav-link" (click)="presentAuthDialog()">LOGIN</a>
+            <a class="nav-link" (click)="presentAuthDialog()">登入</a>
         </li>
         <li *ngIf="!signedIn" class="nav-item pull-xs-right">
-            <a class="nav-link" (click)="presentAuthDialog('register')" >REGISTER</a>
+            <a class="nav-link" (click)="presentAuthDialog('register')" >註冊</a>
         </li>
         <!--  Fixing
         <li *ngIf="signedIn" class="nav-item pull-xs-right"> 
@@ -32,7 +27,7 @@
         </li>
         -->
         <li *ngIf="signedIn" class="nav-item pull-xs-right"> 
-            <a class="nav-link" (click)="logOut()">LOGOUT</a>
+            <a class="nav-link" (click)="logOut()">登出</a>
         </li>
     </ul>
     </div>

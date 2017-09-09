@@ -11,7 +11,7 @@ import { DocumentService } from './document.service';
 	providers: [DocumentService]
 })
 export class DocumentsComponent implements OnInit{
-	pageTitle: string = "Document Dashboard"
+	pageTitle: string = "找錢者們"
 	documents: Document[];
 	errorMessage: string; 
 	mode = "Observable";

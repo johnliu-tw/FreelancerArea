@@ -47,7 +47,6 @@
                     <div class='form-group'>
                         <label for='hourly_rate'>Hourly Rate</label>
                         <div class="input-group">
-                            <span class="input-group-addon">$</span>
                             <input type="number" class="form-control" id='hourly_rate' name='hourly_rate' #hourly_rate='ngModel' [(ngModel)]=proposal.hourly_rate
                                 required>
                             <div class="alert alert-danger" [hidden]="hourly_rate.valid || hourly_rate.pristine">

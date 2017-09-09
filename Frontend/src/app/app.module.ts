@@ -46,7 +46,7 @@ import { FacebookLoginComponent } from "./login-form/fb.component";
     HttpModule,
     MaterializeModule
   ],
-  providers: [DocumentService, Angular2TokenService, AuthService,AuthGuard],
+  providers: [DocumentService, Angular2TokenService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

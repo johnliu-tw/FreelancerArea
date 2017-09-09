@@ -3,6 +3,8 @@ import { Router } from '@angular/router'
 import { Observable } from 'rxjs/Rx';
 import { Proposal } from './proposal';
 import { ProposalService} from './proposal.service';
+import {Angular2TokenService} from "angular2-token";
+
 
 
 @Component({
@@ -20,7 +22,8 @@ export class ProposalListComponent implements OnInit{
 
 	constructor(
 		private proposalService: ProposalService,
-		private router: Router
+		private router: Router,
+		private authToken: Angular2TokenService
 		){}
 
 	ngOnInit(){

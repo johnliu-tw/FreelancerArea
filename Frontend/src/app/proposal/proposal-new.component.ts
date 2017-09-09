@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Proposal } from './proposal';
 import { ProposalService} from './proposal.service';
+import {Angular2TokenService} from "angular2-token";
 
 @Component({
     moduleId: module.id,
@@ -16,7 +17,8 @@ export class ProposalNewComponent {
     submitted: boolean = false;
 
     constructor(
-        private proposalService: ProposalService
+        private proposalService: ProposalService,
+        private authToken: Angular2TokenService
     ){}
 
     createProposal(proposal){
