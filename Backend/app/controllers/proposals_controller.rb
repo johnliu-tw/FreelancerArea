@@ -3,7 +3,7 @@ class ProposalsController < ApplicationController
 
   # GET /proposals
   def index
-    @proposals = Proposal.all
+    @proposals = Proposal.order('created_at DESC')
 
     render json: @proposals
   end
@@ -47,6 +47,6 @@ class ProposalsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def proposal_params
-      params.require(:proposal).permit(:customer, :portfolio_url, :tools, :estimated_hours, :hourly_rate, :weeks_to_complete, :client_email)
+      params.require(:proposal).permit(:customer, :portfolio_url, :tools, :estimated_hours, :hourly_rate, :days_to_complete,:provide_tool,:location,:service_content,:owner_email, :client_email)
     end
 end

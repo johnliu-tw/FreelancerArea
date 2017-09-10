@@ -46,6 +46,6 @@ class FreelanceDocumentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def freelance_document_params
-      params.require(:freelance_document).permit(:title, :file_url, :description, :image_url)
+      params.require(:freelance_document).permit(:title, :file_url, :description, :image_url,:service_location, :service_content, :contact, :owner_email)
     end
 end

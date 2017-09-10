@@ -1,94 +1,103 @@
 <div class="card container form-container">
     <div class="row">
-        <div class="col-md-6">
-            <h1>Create a Proposal</h1>
+        <div class="col-md-12 col-xs-12">
+            <h2>建立一個方案</h2>
             <div>
-                <form (ngSubmit) = "createProposal(proposal)" #proposalForm='ngForm'>
+                <form (ngSubmit) = "createProposal(proposal)" #proposalForm='ngForm' id="proposal_form">
                     <div class='form-group'>
-                        <label for='customer'>Customer Name</label>
-                        <input type="text" class="form-control" id='customer' placeholder="Add Company" name='customer' required #customer='ngModel'
+                        <label for='customer'>稱呼 <em>(選填)</em></label>
+                        <input type="text" class="form-control" id='customer' placeholder="除蟑高手,排隊專家or電腦肥宅等稱呼" name='customer' #customer='ngModel'
                             [(ngModel)]=proposal.customer>
-                        <div class="alert alert-danger" [hidden]="customer.valid || customer.pristine">
-                            Customer name is required
-                        </div>
                     </div>
                     <div class='form-group'>
-                        <label for='portfolio_url'>Portfolio Url</label>
-                        <input type="text" class="form-control" id='portfolio_url' placeholder="Add Portfolio Url" name='portfolio_url' #portfolio_url='ngModel'
-                            [(ngModel)]=proposal.portfolio_url required>
-                        <div class="alert alert-danger" [hidden]="portfolio_url.valid || portfolio_url.pristine">
-                            Portfolio Url is required
-                        </div>
+                            <label for='service_content'>項目類型</label>
+                            <select id='service_content' name="service_content" [(ngModel)]="proposal.service_content" #service_content='ngModel' style="display:block">
+                                    <option *ngFor="let c of contents" [ngValue]="c.id">{{c.value}}</option>
+                            </select>
+                            <div class="alert alert-danger" [hidden]="service_content.valid || service_content.pristine">
+                                必填
+                            </div>
                     </div>
                     <div class='form-group'>
-                        <label for='tools'>Tools</label>
+                            <label for='description'>需求描述</label>
+                            <textarea class="form-control" form="proposal_form" id='description' placeholder="寫下所有你需要的一切" name='description' rows="4" cols="50" #description='ngModel' [(ngModel)]=proposal.description
+                                required></textarea>
+                            <div class="alert alert-danger" [hidden]="description.valid || description.pristine">
+                                必填
+                            </div>
+                    </div>
+                    <div class='form-group'>
+                            <label for='location'>地點</label>
+                            <input type="text" class="form-control" id='location' placeholder="寫下解決這問題的地點" name='location' #location='ngModel' [(ngModel)]=proposal.location
+                                required>
+                            <div class="alert alert-danger" [hidden]="location.valid || location.pristine">
+                                必填
+                            </div>
+                    </div>
+                    <div class='form-group'>
+                        <label for='tools'>需自備的工具</label>
                         <input type="text" class="form-control" id='tools' placeholder="Add Tools" name='tools' #tools='ngModel' [(ngModel)]=proposal.tools
                             required>
                         <div class="alert alert-danger" [hidden]="tools.valid || tools.pristine">
-                            Tools is required
+                            必填
                         </div>
                     </div>
                     <div class='form-group'>
-                        <label for='estimated_hours'>Estimated Hours</label>
+                        <label for='provide_tool'>我提供的工具</label>
+                        <input type="text" class="form-control" id='provide_tool' name='provide_tool' #provide_tool='ngModel' [(ngModel)]=proposal.provide_tool
+                        required>
+                        <div class="alert alert-danger" [hidden]="provide_tool.valid || provide_tool.pristine">
+                            必填
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label for='estimated_hours'>估計需要的工作時間(時)</label>
                         <input type="number" class="form-control" id='estimated_hours' name='estimated_hours' #estimated_hours='ngModel' [(ngModel)]=proposal.estimated_hours
                             required>
                         <div class="alert alert-danger" [hidden]="estimated_hours.valid || estimated_hours.pristine">
-                            Estimated Hours is required
+                            必填
                         </div>
                     </div>
                     <div class='form-group'>
-                        <label for='weeks_to_complete'>Weeks To Complete</label>
-                        <input type="number" class="form-control" id='weeks_to_complete' name='weeks_to_complete' #weeks_to_complete='ngModel' [(ngModel)]=proposal.weeks_to_complete
+                        <label for='days_to_complete'>時限(日)</label>
+                        <input type="number" class="form-control" id='days_to_complete' name='days_to_complete' #days_to_complete='ngModel' [(ngModel)]=proposal.days_to_complete
                             required>
-                        <div class="alert alert-danger" [hidden]="weeks_to_complete.valid || weeks_to_complete.pristine">
-                            Weeks To Complete is required
+                        <div class="alert alert-danger" [hidden]="days_to_complete.valid || days_to_complete.pristine">
+                            必填
                         </div>
                     </div>
                     <div class='form-group'>
-                        <label for='hourly_rate'>Hourly Rate</label>
+                        <label for='hourly_rate'>酬勞(時薪)</label>
                         <div class="input-group">
                             <input type="number" class="form-control" id='hourly_rate' name='hourly_rate' #hourly_rate='ngModel' [(ngModel)]=proposal.hourly_rate
                                 required>
                             <div class="alert alert-danger" [hidden]="hourly_rate.valid || hourly_rate.pristine">
-                                Hourly Rate is required
+                                必填
                             </div>
                         </div>
                     </div>
                     <div class='form-group'>
-                        <label for='client_email'>Client Email <em>(Optional)</em></label>
+                        <label for='client_email'>指名Email <em>(選填，填了後直接寄出此方案給收件者)</em></label>
                         <input type="text" class="form-control" id='client_email' name='client_email' #client_email='ngModel' [(ngModel)]=proposal.client_email
                             >
                     </div>
-
+                    <div class='form-group'>
+                            <label for='owner_email'>您的Email <em>(將顯示此欄作為連繫用)</em></label>
+                            <input type="text" class="form-control" id='owner_email' name='owner_email' #owner_email='ngModel' [(ngModel)]=proposal.owner_email
+                                readonly>
+                    </div>
                     <button type="submit" 
-                            class="btn btn-outline-primary btn-lg" 
+                            class="btn btn-outline-primary btn-lg btn-block" 
                             [disabled]="!proposalForm.form.valid"
-                            [hidden]="submitted">Generate Proposal</button>
+                            [hidden]="submitted">建立方案！</button>
                     <div class="alert alert-success" role="alert" [hidden]="!submitted">
-                        Your Proposal has been generated <a class="alert-link" routerLink="/proposal">View all proposals </a>
+                        恭喜！你的方案已被建立 <a class="alert-link" routerLink="/proposal">看所有的方案 </a>
                     </div>
 
                 </form>
             </div>
         </div>
-        <div class="col-md-6">
-            <div>
-                <p>Hi {{ proposal.customer }},</p>
-                <p>It was a pleasure getting to meet with you and review your project requirements, I believe it is a great
-                    fit for the types of applications that I build out. Please feel free to check out some of my past projects
-                    <a href="{{ proposal.portfolio_url }}">here</a>.</p>
-                <p>To successfully build out the application I will be utilizing {{ proposal.tools }}, and a number of other
-                    tools to ensure that the project follows industry wide best practices.</p>
-                <p>Ensuring that you are fully informed is one of my top priorities, so in addition to incorporating everything
-                    that we discussed, I will also be creating a project management dashboard and sending you a project update
-                    message daily so that you can have a transparent view of the development as it takes place.</p>
-                <p>To accomplish the project and meet the requirements that we discussed, I am estimating that it will take
-                    {{ proposal.estimated_hours }} hours in development time to complete. The project should take {{ proposal.weeks_to_complete
-                    }} weeks to complete and with my hourly rate of {{ proposal.hourly_rate }}/hour, the estimated total
-                    will be {{ proposal.hourly_rate * proposal.estimated_hours | currency:'USD':true:'.0'  }}.</p>
-                <p>The next step from here is to set up a meeting to finalize the project and sign contracts.</p>
-                <p>I am excited to working with you and build out this project.</p>
-            </div>
-        </div>
+        <br>
+        <br>
     </div>
 </div>

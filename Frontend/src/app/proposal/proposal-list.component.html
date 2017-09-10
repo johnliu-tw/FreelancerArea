@@ -1,16 +1,20 @@
 <div class="container">
     <div class="list-group">
         <a class="list-group-item list-group-item-action flex-column align-items-start" href="">
-            <h1>Proposal List</h1>
+            <h1>方案們</h1>
         </a>
+        <div *ngIf="authToken.currentUserData.email!=''">
+                <button type="button" class="btn btn-outline-primary btn-lg" routerLink="/proposal/new">新增</button>
+        </div>
         <span *ngFor='let proposal of proposals' class="list-group-item list-group-item-action flex-column align-items-start">
             <a (click)="goToShow(proposal)" class="proposal-link">
                 <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">{{proposal.customer}}</h5>
-                <small class="text-muted">{{proposal.weeks_to_complete}} weeks</small>
+                <h5 class="mb-1">尋找： {{proposal.customer}}</h5>
+                <small class="text-muted">{{proposal.days_to_complete}} 日</small>
             </div>
-                <p class="mb-1">{{ proposal.hourly_rate * proposal.estimated_hours | currency:'USD':true:'.0'  }}</p>
-                <small class="text-muted">Tools:{{proposal.tools}}</small>
+                <p class="mb-1">懸賞 - {{ proposal.hourly_rate * proposal.estimated_hours | currency:'USD':true:'.0'  }}</p>
+                <p class="mb-1">懸賞內容 - {{proposal.description}}</p>
+                <small class="text-muted">我提供: {{proposal.provide_tool}}</small>
             </a>
         </span>
     </div>
