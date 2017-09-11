@@ -47,6 +47,6 @@ class ProposalsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def proposal_params
-      params.require(:proposal).permit(:customer, :portfolio_url, :tools, :estimated_hours, :hourly_rate, :days_to_complete,:provide_tool,:location,:service_content,:owner_email, :client_email)
+      params.require(:proposal).permit(:customer, :description, :tools, :estimated_hours, :hourly_rate, :days_to_complete,:provide_tool,:location,:service_content,:owner_email, :client_email)
     end
 end

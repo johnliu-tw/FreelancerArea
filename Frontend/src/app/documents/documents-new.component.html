@@ -1,0 +1,61 @@
+<div class="card container form-container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <h2>建立一個你的公開檔案</h2>
+                <div>
+                    <form (ngSubmit) = "createDocument(document)" #documentForm='ngForm' id="document_form">
+                        <div class='form-group'>
+                            <label for='title'>稱號 <em>(選填)</em></label>
+                            <input type="text" class="form-control" id='title' placeholder="高等電腦大師,排隊王等稱號" name='title' #title='ngModel'
+                                [(ngModel)]=document.title>
+                        </div>
+                        <div class='form-group'>
+                                <label for='service_content'>擅長類型(限選1種)</label>
+                                <select id='service_content' name="service_content" [(ngModel)]="document.service_content" #service_content='ngModel' style="display:block">
+                                        <option *ngFor="let c of contents" [ngValue]="c.id">{{c.value}}</option>
+                                </select>
+                                <div class="alert alert-danger" [hidden]="service_content.valid || service_content.pristine">
+                                    必填
+                                </div>
+                        </div>
+                        <div class='form-group'>
+                                <label for='service_location'>服務地點</label>
+                                <input type="text" class="form-control" id='service_location' placeholder="寫下解決這問題的地點" name='service_location' #service_location='ngModel' [(ngModel)]=document.service_location
+                                    required>
+                                <div class="alert alert-danger" [hidden]="service_location.valid || service_location.pristine">
+                                    必填
+                                </div>
+                        </div>
+                        <div class='form-group'>
+                                <label for='description'>服務詳細描述</label>
+                                <textarea class="form-control" form="document_form" id='description' placeholder="寫下所有你需要的一切" name='description' rows="4" cols="50" #description='ngModel' [(ngModel)]=document.description
+                                    required></textarea>
+                                <div class="alert alert-danger" [hidden]="description.valid || description.pristine">
+                                    必填
+                                </div>
+                        </div>
+                        <div class='form-group'>
+                                <label for='contact'>聯繫方式 <em>(將顯示此欄作為連繫用)</em></label>
+                                <input type="text" class="form-control" id='contact' name='contact' #contact='ngModel' [(ngModel)]=document.contact
+                                    >
+                        </div>
+                        <div class='form-group'>
+                                <input type="hidden" class="form-control" id='owner_email' name='owner_email' #owner_email='ngModel' [(ngModel)]=document.owner_email
+                                    readonly>
+                        </div>
+                        <button *ngIf="authToken.currentUserData"
+                                type="submit" 
+                                class="btn btn-outline-primary btn-lg btn-block" 
+                                [disabled]="!documentForm.form.valid"
+                                [hidden]="submitted">建立方案！</button>
+                        <div class="alert alert-success" role="alert" [hidden]="!submitted">
+                            恭喜！你的方案已被建立 <a class="alert-link" routerLink="/document">看所有的方案 </a>
+                        </div>
+    
+                    </form>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>

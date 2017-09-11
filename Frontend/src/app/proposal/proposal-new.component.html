@@ -86,7 +86,8 @@
                             <input type="text" class="form-control" id='owner_email' name='owner_email' #owner_email='ngModel' [(ngModel)]=proposal.owner_email
                                 readonly>
                     </div>
-                    <button type="submit" 
+                    <button *ngIf="authToken.currentUserData"
+                            type="submit" 
                             class="btn btn-outline-primary btn-lg btn-block" 
                             [disabled]="!proposalForm.form.valid"
                             [hidden]="submitted">建立方案！</button>

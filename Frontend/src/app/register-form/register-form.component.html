@@ -16,7 +16,7 @@
                      name='password'
                      [(ngModel)]="signUpUser.password"
                      class="validate">
-              <label for="password">Password</label>
+              <label for="password">密碼</label>
             </div>                      
             <div class="input-field col-md-12">
               <input id="password_confirmation"
@@ -25,17 +25,17 @@
                      name='password_confirmation'
                      [(ngModel)]="signUpUser.passwordConfirmation"
                      class="validate">
-              <label for="password_confirmation">Password confirmation</label>
+              <label for="password_confirmation">請再輸入一次密碼</label>
             </div>       
             <span *ngIf="signUpUser.password != signUpUser.passwordConfirmation"
                   style="color:red">
-              Passwords must match
+              密碼不相符
             </span>              
-            <div class="col-md-12">       
+            <div class="col-md-12 col-xs-12" style="text-align:center;">       
               <button type="submit"
                       [disabled]="!(f.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)"
-                      class="waves-effect waves-light btn blue right">
-                Sign up
+                      class="waves-effect waves-light btn blue">
+                註冊
               </button>       
             </div>       
           </div>              

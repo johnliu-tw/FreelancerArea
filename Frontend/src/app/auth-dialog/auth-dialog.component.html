@@ -12,10 +12,10 @@
               </div>
               <div class="row">
                     <span class="grey-text text-darken-2" *ngIf="isLoginMode()">
-                      Need an account? <a (click)="authMode='register'">Click here to register.</a>
+                      <a (click)="authMode='註冊'">尚未註冊或不願FB登入?請點擊此註冊</a>
                     </span>
                     <span class="grey-text text-darken-2" *ngIf="isRegisterMode()">
-                      Already have an account? <a (click)="authMode='login'">Click here to login.</a>
+                      <a (click)="authMode='登入'">已有帳號或願意使用FB登入?請點擊此登入</a>
                     </span>
                   </div>
           </div>

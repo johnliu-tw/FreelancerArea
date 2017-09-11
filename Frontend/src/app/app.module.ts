@@ -9,6 +9,7 @@ import { AuthGuard } from "./auth-dialog/auth-dialog.guard";
 import { ProfileComponent } from "./profile/profile.component";
 import { HomepageComponent } from './homepage/homepage.component';
 import { DocumentsComponent } from './documents/documents.component';
+import { DocumentNewComponent} from './documents/documents-new.component';
 import { DocumentService } from './documents/document.service';
 import { ProposalListComponent } from './proposal/proposal-list.component';
 import { ProposalNewComponent } from './proposal/proposal-new.component';
@@ -36,7 +37,8 @@ import { FacebookLoginComponent } from "./login-form/fb.component";
     RegisterFormComponent,
     LoginFormComponent,
     ProfileComponent,
-    FacebookLoginComponent
+    FacebookLoginComponent,
+    DocumentNewComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import {MaterializeAction} from "angular2-materialize";
 })
 export class AuthDialogComponent implements OnInit {
 
-  @Input('auth-mode') authMode: 'login' | 'register' = 'login';
+  @Input('auth-mode') authMode: '登入' | '註冊' = '登入';
   @Output() signedResult = new EventEmitter<any>();
   modalActions = new EventEmitter<string|MaterializeAction>();
   constructor() {
@@ -33,7 +33,7 @@ export class AuthDialogComponent implements OnInit {
           alert(e.err.json().errors.full_messages[0])
         }
     }
-    openDialog(mode: 'login' | 'register' = 'login'){
+    openDialog(mode: '登入' | '註冊' = '登入'){
         this.authMode = mode;
         this.modalActions.emit({action:"modal", params:['open']});
     }
@@ -45,8 +45,8 @@ export class AuthDialogComponent implements OnInit {
     ngOnInit() {
     }
 
-    isLoginMode(){return this.authMode == 'login'}
-    isRegisterMode(){return this.authMode == 'register'}
+    isLoginMode(){return this.authMode == '登入'}
+    isRegisterMode(){return this.authMode == '註冊'}
 
 
 }

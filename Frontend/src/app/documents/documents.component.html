@@ -1,5 +1,8 @@
 <div class="container">
-<h1 class="headline">{{pageTitle}}</h1>
+<div class="list-group-item list-group-item-action flex-column align-items-start" href="">
+        <h1>{{pageTitle}}</h1>
+        <button type="button" *ngIf="authToken.currentUserData" class="btn btn-outline-primary btn-lg" routerLink="/nuggets/new">新增</button>
+</div>
 <div class="card" *ngFor="let document of documents">
     <img class="card-img-top" src="{{ document.image_url }}" alt="Card image cap" style="width:100%">
     <div class="card-body">

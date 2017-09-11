@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170910091032) do
+ActiveRecord::Schema.define(version: 20170910175605) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "account"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20170910091032) do
 
   create_table "proposals", force: :cascade do |t|
     t.string   "customer"
-    t.string   "portfolio_url"
+    t.string   "description"
     t.string   "tools"
     t.decimal  "estimated_hours"
     t.decimal  "hourly_rate"

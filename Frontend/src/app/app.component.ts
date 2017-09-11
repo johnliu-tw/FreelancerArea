@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
       this.signedIn = false;
     }
   }
-  presentAuthDialog(mode?: 'login'| 'register'){
+  presentAuthDialog(mode?: '登入'| '註冊'){
     this.authDialog.openDialog(mode);
   }
 }

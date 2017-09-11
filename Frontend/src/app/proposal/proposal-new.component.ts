@@ -28,12 +28,9 @@ export class ProposalNewComponent implements OnInit{
     constructor(
         private proposalService: ProposalService,
         private authToken: Angular2TokenService
-    ){
-        console.log(authToken)
-    }
+    ){}
     ngOnInit(): void {       
         this.proposal.owner_email = this.authToken.currentUserData.email
-        console.log(this.authToken.currentUserData.email)
     }
     createProposal(proposal){
         this.submitted = true;
