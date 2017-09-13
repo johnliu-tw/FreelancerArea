@@ -1,25 +1,25 @@
 <nav class="navbar navbar-toggleable-md  navbar-expand-lg navbar-light nav-styles">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="true" aria-label="Toggle navigation">
+    <button #navbarToggler (click)="lowerContainer(collapse)" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="true" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01" aria-expanded="true">
     <ul class='nav navbar-nav mr-auto'>
         <li class="nav-item">
-            <a class="nav-link" routerLink="/home" routerLinkActive="active">首頁</a>
+            <a class="nav-link" (click)="collapseNav()" routerLink="/home" routerLinkActive="active">首頁</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" routerLink="/nuggets" routerLinkActive="active">找錢者們</a>
+            <a class="nav-link" (click)="collapseNav()" routerLink="/nuggets" routerLinkActive="active">找錢者們</a>
         </li>
         <li class="nav-item">
-                <a class="nav-link" routerLink="/proposal" routerLinkActive="active">求助者們</a>
+                <a class="nav-link" (click)="collapseNav()" routerLink="/proposal" routerLinkActive="active">求助者們</a>
         </li>
     </ul>   
     <ul class="nav navbar-nav">  
         <li *ngIf="!signedIn" class="nav-item pull-xs-right"> 
-            <a class="nav-link" (click)="presentAuthDialog()">登入</a>
+            <a class="nav-link" (click)="presentAuthDialog();collapseNav()">登入</a>
         </li>
         <li *ngIf="!signedIn" class="nav-item pull-xs-right">
-            <a class="nav-link" (click)="presentAuthDialog('register')" >註冊</a>
+            <a class="nav-link" (click)="presentAuthDialog('註冊');collapseNav()" >註冊</a>
         </li>
         <!--  Fixing
         <li *ngIf="signedIn" class="nav-item pull-xs-right"> 
@@ -27,12 +27,12 @@
         </li>
         -->
         <li *ngIf="signedIn" class="nav-item pull-xs-right"> 
-            <a class="nav-link" (click)="logOut()">登出</a>
+            <a class="nav-link" (click)="logOut();collapseNav()">登出</a>
         </li>
     </ul>
     </div>
 </nav>
 <app-auth-dialog (signedResult)="checkSignIn($event)" #authDialog></app-auth-dialog> 
-<div class="app-body">
+<div class="app-body" [style.margin-top.%]="margin_top">
     <router-outlet></router-outlet>
 </div>

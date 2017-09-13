@@ -4,22 +4,27 @@
         <button type="button" *ngIf="authToken.currentUserData" class="btn btn-outline-primary btn-lg" routerLink="/nuggets/new">新增</button>
 </div>
 <div class="card" *ngFor="let document of documents">
-    <img class="card-img-top" src="{{ document.image_url }}" alt="Card image cap" style="width:100%">
     <div class="card-body">
         <h3 class="card-title">
-            {{document.title}}
+            我是 : {{document.title}}
         </h3>
         <p class="card-text">
-            <small class="text-muted">
-            Last updated: {{ document.updated_at | date}}
-            </small>
+            服務項目 : {{ contentFillter(document.service_content) }}
         </p>
         <p class="card-text">
-            {{ document.description }}
+            服務地區 : {{ document.service_location }}
         </p>
-        <div>
-            <a class="btn btn-primary btn-lg" href="{{document.file_url}}">Download File</a>
-        </div>
+        <p class="card-text">
+            關於我 : {{ document.description }}
+        </p>
+        <p class="card-text">
+            聯繫我 : {{ document.contact }}
+        </p>  
+        <p class="card-text">
+            <small class="text-muted">
+            建立時間 : {{ document.updated_at | date}}
+            </small>
+        </p>     
     </div>
 </div>
 </div>
